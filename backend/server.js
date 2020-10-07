@@ -1,13 +1,10 @@
 import express from 'express';
 import config from './config';
-import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import userRoute from './routes/userRoute';
 import productRoute from './routes/productRoute';
 import orderRoute from './routes/orderRoute';
-
-dotenv.config();
 
 const mongodbUrl = config.MONGODB_URL;
 mongoose.connect(mongodbUrl, {
@@ -34,8 +31,6 @@ app.use('/api/orders', orderRoute);
 //    res.send(data.products);
 //});
 
-
-app.listen(5000,()=>{
-    
-    console.log("server started at http://localhost:5000")
-});
+app.listen( 5000, () => {
+    console.log('Server started at http://localhost:5000', config.PORT);
+  });
